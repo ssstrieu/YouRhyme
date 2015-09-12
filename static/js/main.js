@@ -46,12 +46,23 @@ function processSubtitle(subtitle) {
 }
 
 var lang = "en_US";
+var id, startWord, endWord, vid=1;
 
-var id = "fZ9WiuJPnNA";
-var startWord = "four";
-var endWord = "floor";
+if (vid == 0) {
+    id = "fZ9WiuJPnNA";
+    startWord = "four";
+    endWord = "floor";
+} else {
+    id = "9KKHDEdNOUA";
+    startWord = "stream";
+    endWord = "dream";
+}
 
+var vidUrl = "https://www.youtube.com/embed/" + id;
 var youtubeUrl = "https://www.youtube.com/api/timedtext?hl=" + lang + "&sparams=asr_langs%2Ccaps%2Cv%2Cexpire&key=yttt1&caps=asr&lang=en&fmt=srv2&v=" + id;
+
+
+$("#videourl").attr("src", vidUrl);
 
 // Download the subtitles
 var xhr = new XMLHttpRequest();
