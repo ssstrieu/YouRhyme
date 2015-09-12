@@ -3,6 +3,7 @@
 	<title>Play YouRhyme</title>
 	<link href="../static/css/bootstrap.min.css" rel="stylesheet">
 	<link href="../static/css/style.css" rel="stylesheet">
+	<link rel="icon" href="../static/img/music.ico" type="image/x-icon" />
 	<link href='https://fonts.googleapis.com/css?family=Slackey|Changa+One:400,400italic' rel='stylesheet' type='text/css'>
 
 <!-- Bootstrap collapsible navbar -->
@@ -42,9 +43,19 @@
         <h4 class="modal-title">Game Instructions:</h4>
       </div>
       <div class="modal-body">
-        <p>Watch your favorite music video and complete the lyrics by clicking on the right word block. Make the most correct matches to win!
+        <p>Watch your favorite music video and complete the lyrics by clicking on the right word block. 
 
-        	[screenshots to be added]</p>
+        	The word to rhyme will be displayed in BLUE KEY WORD.</p>
+
+        	<button class='btn key'>floor</button>
+
+        	Click the PINK word block that rhymes with our key word and correctly completes the lyric. 
+
+        	<button class='btn wordblock'>four</button>
+
+        	Make the most correct matches to win points and compete with your friends!
+
+		<p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -95,7 +106,28 @@
 
 
 <!-- SCOREBOARD -->
-			<div class='col-md-3 scoreboard'><h4 class='funkyFont'>Scoreboard</h4>
+			<div class='col-md-3 scoreboard'>
+				<h4 class='funkyFont'>Your Score!</h4>
+				
+				<div class='scoreboard-item active'>
+					<div class='badgeholder'>
+						<img src="../static/img/badge2.png">
+						<img src="../static/img/badge2.png">
+						<img src="../static/img/badge2.png">
+						<img src="../static/img/badge2.png">
+
+						<img src="../static/img/badge3.png">
+					</div>
+					<img src='../static/img/user.png' class='user-icon'/ >
+						<div class='scoreboard-item-content'>
+							<div class='username' style='color:#000;'>Mikey</div>
+							<div class='score'><span style='color:#fa6801;font-size:25px; font-weight:bold;'>275 </span><span style='color:#000;font-size:25px;'>pts</span></div>
+
+					</div>
+				</div><!--/scoreboard-item-->
+
+
+				<h4 class='funkyFont' style='margin-top:10px;'>Scoreboard</h4>
 				
 				<div class='scoreboard-item'>
 					<div class='badgeholder'>
@@ -104,13 +136,13 @@
 					</div>
 					<img src='../static/img/user.png' class='user-icon'/ >
 						<div class='scoreboard-item-content'>
-							<div class='username'>Username</div>
+							<div class='username'>Isabella</div>
 							<div class='score'><span style='color:#fa6801;font-size:25px; font-weight:bold;'>75 </span><span style='color:#fff;font-size:25px;'>pts</span></div>
 
 					</div>
 				</div><!--/scoreboard-item-->
 
-				<div class='scoreboard-item'>
+<!-- 				<div class='scoreboard-item'>
 					<div class='badgeholder'>
 						<img src="../static/img/badge1.png">
 						<img src="../static/img/badge2.png">
@@ -118,11 +150,11 @@
 					</div>
 					<img src='../static/img/user.png' class='user-icon'/ >
 						<div class='scoreboard-item-content'>
-							<div class='username'>Username</div>
+							<div class='username'>Alexa</div>
 							<div class='score'><span style='color:#fa6801;font-size:25px; font-weight:bold;'>60 </span><span style='color:#fff;font-size:25px;'>pts</span></div>
 
 					</div>
-				</div><!--/scoreboard-item-->
+				</div> /scoreboard-item-->
 
 				<div class='scoreboard-item'>
 					<div class='badgeholder'>
@@ -130,7 +162,7 @@
 					</div>
 					<img src='../static/img/user.png' class='user-icon'/ >
 						<div class='scoreboard-item-content'>
-							<div class='username'>Username</div>
+							<div class='username'>Bart</div>
 							<div class='score'><span style='color:#fa6801;font-size:25px; font-weight:bold;'>55 </span><span style='color:#fff;font-size:25px;'>pts</span></div>
 
 					</div>
@@ -149,6 +181,97 @@
     <script src="../static/js/bootstrap.min.js"></script>
     <script src="../static/js/main.js"></script>
 
+<script>
+  // This is called with the results from from FB.getLoginStatus().
+  function statusChangeCallback(response) {
+    console.log('statusChangeCallback');
+    console.log(response);
+    // The response object is returned with a status field that lets the
+    // app know the current login status of the person.
+    // Full docs on the response object can be found in the documentation
+    // for FB.getLoginStatus().
+    if (response.status === 'connected') {
+      // Logged into your app and Facebook.
+      testAPI();
+    } else if (response.status === 'not_authorized') {
+      // The person is logged into Facebook, but not your app.
+      document.getElementById('status').innerHTML = 'Please log ' +
+        'into this app.';
+    } else {
+      // The person is not logged into Facebook, so we're not sure if
+      // they are logged into this app or not.
+      document.getElementById('status').innerHTML = 'Please log ' +
+        'into Facebook.';
+    }
+  }
+
+  // This function is called when someone finishes with the Login
+  // Button.  See the onlogin handler attached to it in the sample
+  // code below.
+  function checkLoginState() {
+    FB.getLoginStatus(function(response) {
+      statusChangeCallback(response);
+    });
+  }
+
+  window.fbAsyncInit = function() {
+  FB.init({
+    appId      : '{your-app-id}',
+    cookie     : true,  // enable cookies to allow the server to access 
+                        // the session
+    xfbml      : true,  // parse social plugins on this page
+    version    : 'v2.2' // use version 2.2
+  });
+
+  // Now that we've initialized the JavaScript SDK, we call 
+  // FB.getLoginStatus().  This function gets the state of the
+  // person visiting this page and can return one of three states to
+  // the callback you provide.  They can be:
+  //
+  // 1. Logged into your app ('connected')
+  // 2. Logged into Facebook, but not your app ('not_authorized')
+  // 3. Not logged into Facebook and can't tell if they are logged into
+  //    your app or not.
+  //
+  // These three cases are handled in the callback function.
+
+  FB.getLoginStatus(function(response) {
+    statusChangeCallback(response);
+  });
+
+  };
+
+  // Load the SDK asynchronously
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+
+  // Here we run a very simple test of the Graph API after login is
+  // successful.  See statusChangeCallback() for when this call is made.
+  function testAPI() {
+    console.log('Welcome!  Fetching your information.... ');
+    FB.api('/me', function(response) {
+      console.log('Successful login for: ' + response.name);
+      document.getElementById('status').innerHTML =
+        'Thanks for logging in, ' + response.name + '!';
+    });
+  }
+</script>
+
+<!--
+  Below we include the Login Button social plugin. This button uses
+  the JavaScript SDK to present a graphical Login button that triggers
+  the FB.login() function when clicked.
+-->
+<fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+</fb:login-button>
+
+<div id="status">
+</div>
 
 
 

@@ -1,7 +1,7 @@
 body{
 	background-image: url("../img/lights.jpg");
 	background-size: 100% 100%;
-    background-repeat: no-repeat;
+    background-repeat: repeat;
     font:#fff;
 }
 
@@ -19,6 +19,11 @@ body{
 
 }
 
+.active{
+	background-color: #fff;
+	color:black;
+
+}
 .scoreboard{
 	padding:10px;
 	min-height: 300px;
