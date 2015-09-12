@@ -1,0 +1,151 @@
+<html>
+<head>
+	<title>TITLE</title>
+	<link href="../static/css/bootstrap.min.css" rel="stylesheet">
+	<link href="../static/css/style.css" rel="stylesheet">
+	<link href='https://fonts.googleapis.com/css?family=Slackey|Changa+One:400,400italic' rel='stylesheet' type='text/css'>
+
+<!-- Bootstrap collapsible navbar -->
+	<nav class="navbar navbar-inverse navbar-default navbar-fixed-top">
+	  <div class="container-fluid">
+	    <!-- Brand and toggle get grouped for better mobile display -->
+	    <div class="navbar-header">
+	      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+	        <span class="sr-only">Toggle navigation</span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	      </button>
+		    <ul class="nav navbar-nav navbar-right">
+		        <li><a class="navbar-brand funkyFont" href="/">YouRhyme</a></li>
+			    <li><img class='navbar nav' style='float:right;width:180px' src="../static/img/facebook.png"></li>
+		    </ul>
+	    </div>
+
+	  </div><!-- /.container-fluid -->
+	</nav>
+</head>
+
+<body>
+
+
+<!-- Modal: triggered with help button -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Game Instructions:</h4>
+      </div>
+      <div class="modal-body">
+        <p>Watch your favorite music video and complete the lyrics by clicking on the right word block. Make the most correct matches to win!
+
+        	[screenshots to be added]</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+	<div class="container main">
+		<H1 class='funkyFont' style='display:inline;margin:4px; '>Play Now! <button type="button modalbutton" style='float:right;display:inline;'class="btn btn-warning btn-lg" data-toggle="modal" data-target="#myModal">How to Play?</button></h1>
+		
+		<div class='row'>
+			
+			<div class='col-md-9'>
+				<div class='video'>
+					<div class='row wordblack-container'>
+						<div class='col-md-8 '></div>
+							<iframe width="560" height="315" src="https://www.youtube.com/embed/OTEMuea9nx4" frameborder="0" allowfullscreen></iframe>
+						<div class='col-md-4'>
+							<button class='btn wordblock key'>WORD</button>
+							<button class='btn wordblock'>WORD</button>
+							<button class='btn wordblock'>WORD</button>
+							<button class='btn wordblock'>WORD</button>
+							<button class='btn wordblock'>WORD</button>
+						</div>
+					</div>
+					
+
+
+				</div>
+			</div>
+<!-- WORD BLOCKS -->
+
+
+
+
+<!-- SCOREBOARD -->
+			<div class='col-md-3 scoreboard'><h4 class='funkyFont'>Scoreboard</h4>
+				
+				<div class='scoreboard-item'>
+					<div class='badgeholder'>
+						<img src="../static/img/badge2.png">
+						<img src="../static/img/badge3.png">
+					</div>
+					<img src='../static/img/user.png' class='user-icon'/ >
+						<div class='scoreboard-item-content'>
+							<div class='username'>Username</div>
+							<div class='score'><span style='color:#fa6801;font-size:25px; font-weight:bold;'>75 </span><span style='color:#fff;font-size:25px;'>pts</span></div>
+
+					</div>
+				</div><!--/scoreboard-item-->
+
+				<div class='scoreboard-item'>
+					<div class='badgeholder'>
+						<img src="../static/img/badge1.png">
+						<img src="../static/img/badge2.png">
+						<img src="../static/img/badge3.png">
+					</div>
+					<img src='../static/img/user.png' class='user-icon'/ >
+						<div class='scoreboard-item-content'>
+							<div class='username'>Username</div>
+							<div class='score'><span style='color:#fa6801;font-size:25px; font-weight:bold;'>60 </span><span style='color:#fff;font-size:25px;'>pts</span></div>
+
+					</div>
+				</div><!--/scoreboard-item-->
+
+				<div class='scoreboard-item'>
+					<div class='badgeholder'>
+						<img src="../static/img/badge1.png">
+					</div>
+					<img src='../static/img/user.png' class='user-icon'/ >
+						<div class='scoreboard-item-content'>
+							<div class='username'>Username</div>
+							<div class='score'><span style='color:#fa6801;font-size:25px; font-weight:bold;'>55 </span><span style='color:#fff;font-size:25px;'>pts</span></div>
+
+					</div>
+				</div><!--/scoreboard-item-->
+			</div><!-- /scoreboard -->
+
+
+		</div>
+	</div>
+
+
+	<script src="../static/js/jquery-1.11.3.min.js"></script>
+    <script src="../static/js/bootstrap.min.js"></script>
+    <script src="../static/js/main.js"></script>
+
+    <script>
+    	$().onclick(class.toggle)
+
+
+
+    </script>
+
+
+
+
+
+
+
+
+</body>
+<footer>Project Literacy Hackathon 2015</footer>
