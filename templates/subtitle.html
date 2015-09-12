@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <style>
+        #subtitle {
+            width: 1000px;
+        }
+    </style>
+    </head>
+    <body>
+        example codes that work: 57AStPWUA74, YDoTXZgasXI<br>
+        example codes that don't work: Tpaj9Sm7i7I<br>
+        youtube code: <input id="code" type="text" value="YDoTXZgasXI"></input><br>
+        <button onclick="codeSubtitle()">code change</button><br>
+        
+        youtube time: <input id="time" type="text" value="1000"></input><br>
+        <button onclick="timeSubtitle()">time change</button><br>
+        
+        youtube subtitle:<input id="subtitle" value="nothing yet"></input><br>
+        <br>
+        DEBUG:<br>
+        duration: <input id="duration" type="text" value="1000"></input><br>
+        <div id="youtube"></div>
+    </body>
+    <footer>
+    </footer>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="../static/js/subtitle.js"></script>
+    <script src="../static/js/player.js"></script>
+    <script src="https://www.youtube.com/iframe_api"></script><!--- must be loaded after onYouTubeIframeAPIReady -->
+    <script>
+        tagVideo("youtube",800,600); // Set the video tag
+        setVideo("57AStPWUA74", 0, 1000); // set the video id, start time, stop time, and endtime
+        nextVideo(); // launch the video ASAP
+        loadSubtitle("57AStPWUA74","en_US");
+        
+        function intervalYouTube(milli)
+        {
+            // The callback function for the player, with the current time
+            // Subtract the time from
+            intervalSubtitle(milli);
+        }
+    
+        function timeSubtitle()
+        {
+            var test = $("#time");
+            var time = $("#time")[0].value;
+            setSubtitleCur(time);
+        }
+    
+        function codeSubtitle()
+        {
+            var code = $("#code")[0].value;
+            var lang = "en_US";
+            
+            var start = 0; // ?????
+            var end = 2000000; // ???
+            
+            // NOTE! VIDEO CAN LOAD BEFORE OR AFTER SUBTITLE!!!!
+            setSubtitleCur(0); // set the start time for subtitle
+            setVideo(code, 0, 2000000); // set the video id, start time, stop time, and endtime.  NOTE: INT_MAX is maximum 2147483647
+            nextVideo(); // launch the video ASAP
+            loadSubtitle(code,lang); // load the subtitles!
+        }
+    
+    
+    </script>
+</html>
