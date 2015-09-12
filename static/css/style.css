@@ -25,6 +25,15 @@ body{
 
 
 }
+
+.startword {
+      background-color: #42F2F7;
+}
+
+.hole {
+      background-color: #DB2763;
+}
+
 .scoreboard-item{
 	padding:6px;
 	border:1px solid #B0DB43;

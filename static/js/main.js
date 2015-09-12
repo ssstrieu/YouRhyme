@@ -53,12 +53,15 @@ xhr.onreadystatechange = function() {
         }
         console.log(lyrics);
         var lyrics_element = document.getElementById("lyricsbox");
-        lyrics_element.innerHTML = lyrics;
+
+        var revisedLyrics = lyrics.replace(endWord, "<span class=\"hole\" id=\"hole\">___</span>");
+        revisedLyrics = revisedLyrics.replace(startWord, "<span class=\"startword\" id=\"startword\">" + startWord + "</span>");
+        lyrics_element.innerHTML = revisedLyrics;
 
         var keyword_element = document.getElementById("keyword");
         keyword_element.innerHTML = startWord;
 
-        var words = ["soar", "pour", "galore", "snore"];
+        var words = ["soar", "pour", "floor", "snore"];
         $("#word1").html(words[0]);
         $("#word2").html(words[1]);
         $("#word3").html(words[2]);
