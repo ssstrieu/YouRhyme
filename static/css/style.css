@@ -112,6 +112,12 @@ float:right;
 
 }
 
+.lyrics-text {
+	background-color: #fff;
+	font-color:#fff;
+        font-size: 48px;
+}
+
 .funkyFont{
 	font-family: 'Slackey', cursive;
 	color: #B0DB43; /*green*/
