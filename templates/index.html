@@ -1,6 +1,6 @@
 <html>
 <head>
-	<title>TITLE</title>
+	<title>Play YouRhyme</title>
 	<link href="../static/css/bootstrap.min.css" rel="stylesheet">
 	<link href="../static/css/style.css" rel="stylesheet">
 	<link href='https://fonts.googleapis.com/css?family=Slackey|Changa+One:400,400italic' rel='stylesheet' type='text/css'>
@@ -16,10 +16,12 @@
 	        <span class="icon-bar"></span>
 	        <span class="icon-bar"></span>
 	      </button>
-		    <ul class="nav navbar-nav navbar-right">
-		        <li><a class="navbar-brand funkyFont" href="/">YouRhyme</a></li>
-			    <li><img class='navbar nav' style='float:right;width:180px' src="../static/img/facebook.png"></li>
-		    </ul>
+		    <div class="nav navbar-nav ">
+		        <div class="navbar-brand funkyFont" href="/">YouRhyme <span class='glyphicon glyphicon-music'></span></div>
+			    
+		        <img class='nav navbar-nav navbar-right' style='float:right;width:180px' src="../static/img/facebook.png" />
+			    
+		    </div>
 	    </div>
 
 	  </div><!-- /.container-fluid -->
@@ -52,6 +54,7 @@
   </div>
 </div>
 
+
 <!-- MAIN CONTENT -->
 	<div class="container main">
 		<H1 class='funkyFont' style='display:inline;margin:4px; '>Play Now! <button type="button modalbutton" style='float:right;display:inline;'class="btn btn-warning btn-lg" data-toggle="modal" data-target="#myModal">How to Play?</button></h1>
@@ -60,23 +63,33 @@
 			
 			<div class='col-md-9'>
 				<div class='video'>
-					<div class='row wordblack-container'>
-						<div class='col-md-8 '></div>
-							<iframe width="560" height="315" src="https://www.youtube.com/embed/OTEMuea9nx4" frameborder="0" allowfullscreen></iframe>
+					<div class='row '> <!-- Contains vid and work blocks -->
+						<div class='col-md-8 '>
+
+<!-- Youtube Vid here -->
+						<iframe width="560" height="315" src="https://www.youtube.com/embed/fZ9WiuJPnNA" frameborder="0" allowfullscreen></iframe>
+						</div>
 						<div class='col-md-4'>
-							<button class='btn wordblock key'>WORD</button>
+<!-- WORD BLOCKS -->
+							<label for='keyword'>Choose the word that Rhymes with:</label>
+							<button class='btn key' id='keyword' name='keyword'>WORD</button>
+
 							<button class='btn wordblock'>WORD</button>
 							<button class='btn wordblock'>WORD</button>
 							<button class='btn wordblock'>WORD</button>
 							<button class='btn wordblock'>WORD</button>
 						</div>
 					</div>
+					<div class='lyricsbox'>
+						<p>Lyrics go here.</p>
+					</div>
+
 					
 
 
 				</div>
 			</div>
-<!-- WORD BLOCKS -->
+
 
 
 
@@ -133,12 +146,6 @@
     <script src="../static/js/bootstrap.min.js"></script>
     <script src="../static/js/main.js"></script>
 
-    <script>
-    	$().onclick(class.toggle)
-
-
-
-    </script>
 
 
 
@@ -148,4 +155,4 @@
 
 
 </body>
-<footer>Project Literacy Hackathon 2015</footer>
+<footer style='color:#fff;'>Project Literacy Hackathon 2015</footer>
