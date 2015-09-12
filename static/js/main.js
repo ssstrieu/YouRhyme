@@ -10,6 +10,23 @@ function htmlDecode(input){
     return e.childNodes.length === 0 ? "" : e.childNodes[0].nodeValue;
 }
 
+function updateRhymes(word, stopWord) {
+    rhymeUrl = "http://rhymebrain.com/talk?function=getRhymes&word=" + word;
+    $.getJSON( rhymeUrl, function( data ) {
+            var items = [];
+            for (var i=0; i<data.length; i++) {
+                items.push(data[i]["word"]);
+            }
+            if (items[0] != stopWord && items[1] != stopWord && items[2] != stopWord && items[3] != stopWord) {
+                items[2] = stopWord;
+            }
+            $("#word1").html(items[0]);
+            $("#word2").html(items[1]);
+            $("#word3").html(items[2]);
+            $("#word4").html(items[3]);
+        });
+}
+
 function processSubtitle(subtitle) {
     if( !subtitle ) return null;
     var tmp;
@@ -41,12 +58,18 @@ var xhr = new XMLHttpRequest();
 xhr.open('POST', youtubeUrl, true);
 xhr.onreadystatechange = function() {
     if (xhr.readyState == 4 ) {
+        var inExcerpt = false;
         var lyrics = "";
         var subtitles = processSubtitle(xhr.responseText);
         var texts = subtitles.getElementsByTagName("text");
         for (var i=0; i<texts.length; i++) {
             var line = htmlDecode(texts[i].innerHTML);
-            lyrics += line + "<br>";
+            if (line.indexOf(startWord) >= 0) {
+                inExcerpt = true;
+            }
+            if (inExcerpt) {
+                lyrics += line + "<br>";
+            }
             if (line.indexOf(endWord) >= 0) {
                 break;
             }
@@ -61,13 +84,7 @@ xhr.onreadystatechange = function() {
         var keyword_element = document.getElementById("keyword");
         keyword_element.innerHTML = startWord;
 
-        var words = ["soar", "pour", "floor", "snore"];
-        $("#word1").html(words[0]);
-        $("#word2").html(words[1]);
-        $("#word3").html(words[2]);
-        $("#word4").html(words[3]);
-
-        
+        updateRhymes(startWord, endWord);
     }
 }
 xhr.send();
