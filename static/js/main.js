@@ -20,6 +20,16 @@ function updateRhymes(word, stopWord) {
             if (items[0] != stopWord && items[1] != stopWord && items[2] != stopWord && items[3] != stopWord) {
                 items[2] = stopWord;
             }
+
+            // Randomize order
+            for (var j=0; j<100; j++) {
+                var i1 = Math.floor(Math.random() * 4);
+                var i2 = Math.floor(Math.random() * 4);
+                var tmp = items[i1];
+                items[i1] = items[i2];
+                items[i2] = tmp;
+            }
+            // Set elements
             $("#word1").html(items[0]);
             $("#word2").html(items[1]);
             $("#word3").html(items[2]);
@@ -66,26 +76,36 @@ $("#videourl").attr("src", vidUrl);
 
 // Download the subtitles
 var xhr = new XMLHttpRequest();
+var startTimestamp = 0;
+var endTimestamp = 0;
+
 xhr.open('POST', youtubeUrl, true);
 xhr.onreadystatechange = function() {
     if (xhr.readyState == 4 ) {
         var inExcerpt = false;
         var lyrics = "";
+        console.log(xhr.responseText);
         var subtitles = processSubtitle(xhr.responseText);
         var texts = subtitles.getElementsByTagName("text");
         for (var i=0; i<texts.length; i++) {
+            var timestamp = parseInt(texts[i].getAttribute("t"));
+            var duration = parseInt(texts[i].getAttribute("d"));
             var line = htmlDecode(texts[i].innerHTML);
             if (line.indexOf(startWord) >= 0) {
                 inExcerpt = true;
+                startTimestamp = timestamp;
             }
             if (inExcerpt) {
                 lyrics += line + "<br>";
             }
             if (line.indexOf(endWord) >= 0) {
+                endTimestamp = timestamp + duration - 1000;
                 break;
             }
         }
-        console.log(lyrics);
+        console.log(startTimestamp);
+        console.log(endTimestamp);
+
         var lyrics_element = document.getElementById("lyricsbox");
 
         var revisedLyrics = lyrics.replace(endWord, "<span class=\"hole\" id=\"hole\">___</span>");
