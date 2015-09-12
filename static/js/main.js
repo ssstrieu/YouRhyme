@@ -1,18 +1,14 @@
 $( document ).ready(function(){
 
-<<<<<<< HEAD
-	$('.wordblock').on('click', function(){
-		$( this ).addClass('hide');
-    })
-
+$('.wordblock').on('click', function(){
+        $( this ).addClass('hide');
+   });
  
-=======
 function htmlDecode(input){
     var e = document.createElement('div');
     e.innerHTML = input;
     return e.childNodes.length === 0 ? "" : e.childNodes[0].nodeValue;
 }
->>>>>>> origin/master
 
 function processSubtitle(subtitle) {
     if( !subtitle ) return null;
@@ -32,12 +28,12 @@ function processSubtitle(subtitle) {
         }
 }
 
-<<<<<<< HEAD
- 
-}) //document-ready close
-=======
 var lang = "en_US";
+
 var id = "fZ9WiuJPnNA";
+var startWord = "four";
+var endWord = "floor";
+
 var youtubeUrl = "https://www.youtube.com/api/timedtext?hl=" + lang + "&sparams=asr_langs%2Ccaps%2Cv%2Cexpire&key=yttt1&caps=asr&lang=en&fmt=srv2&v=" + id;
 
 // Download the subtitles
@@ -49,15 +45,29 @@ xhr.onreadystatechange = function() {
         var subtitles = processSubtitle(xhr.responseText);
         var texts = subtitles.getElementsByTagName("text");
         for (var i=0; i<texts.length; i++) {
-            lyrics += htmlDecode(texts[i].innerHTML) + "<br>";
+            var line = htmlDecode(texts[i].innerHTML);
+            lyrics += line + "<br>";
+            if (line.indexOf(endWord) >= 0) {
+                break;
+            }
         }
         console.log(lyrics);
-        var lyrics_element = document.getElementById("lyrictext");
+        var lyrics_element = document.getElementById("lyricsbox");
         lyrics_element.innerHTML = lyrics;
+
+        var keyword_element = document.getElementById("keyword");
+        keyword_element.innerHTML = startWord;
+
+        var words = ["soar", "pour", "galore", "snore"];
+        $("#word1").html(words[0]);
+        $("#word2").html(words[1]);
+        $("#word3").html(words[2]);
+        $("#word4").html(words[3]);
+
+        
     }
 }
 xhr.send();
-  
-    }) //document-ready close
->>>>>>> origin/master
 
+
+    });
