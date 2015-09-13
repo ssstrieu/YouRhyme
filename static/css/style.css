@@ -50,8 +50,8 @@ img.bingo1{
 
 }
 .active{
-	background-color: #fff;
-	color:black;
+	background-color: #fff !important;
+
 
 }
 .scoreboard{
