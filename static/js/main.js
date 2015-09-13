@@ -70,8 +70,6 @@ if (vid == 0) {
 
 var vidUrl = "https://www.youtube.com/embed/" + id;
 var youtubeUrl = "https://www.youtube.com/api/timedtext?hl=" + lang + "&sparams=asr_langs%2Ccaps%2Cv%2Cexpire&key=yttt1&caps=asr&lang=en&fmt=srv2&v=" + id;
-
-
 $("#videourl").attr("src", vidUrl);
 
 // Download the subtitles
@@ -99,11 +97,15 @@ xhr.onreadystatechange = function() {
                 lyrics += line + "<br>";
             }
             if (line.indexOf(endWord) >= 0) {
-                endTimestamp = timestamp + duration - 1000;
+                endTimestamp = timestamp + duration - 2000;
                 break;
             }
         }
-        console.log(startTimestamp);
+        timestampVidUrl = vidUrl + "?start=" + Math.floor(startTimestamp/1000) + "&end=" + Math.floor(endTimestamp/1000);
+        console.log(timestampVidUrl);
+
+        $("#videourl").attr("src", timestampVidUrl);
+
         console.log(endTimestamp);
 
         var lyrics_element = document.getElementById("lyricsbox");
