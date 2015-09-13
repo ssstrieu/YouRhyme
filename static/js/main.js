@@ -1,3 +1,20 @@
+
+var lang = "en_US";
+var id, startWord, endWord, vid=1;
+
+vid =  Math.floor(Math.random() * 2);
+
+
+function answer(id) {
+    var selected = $("#word" + id).text();
+    if (selected == endWord) {
+        alert("Yes!");
+    } else {
+        alert("Try again!");
+    }
+}
+
+
 $( document ).ready(function(){
 
 $('.wordblock').on('click', function(){
@@ -55,9 +72,6 @@ function processSubtitle(subtitle) {
         }
 }
 
-var lang = "en_US";
-var id, startWord, endWord, vid=1;
-
 if (vid == 0) {
     id = "fZ9WiuJPnNA";
     startWord = "four";
@@ -97,11 +111,11 @@ xhr.onreadystatechange = function() {
                 lyrics += line + "<br>";
             }
             if (line.indexOf(endWord) >= 0) {
-                endTimestamp = timestamp + duration - 2000;
+                endTimestamp = timestamp + duration - 100;
                 break;
             }
         }
-        timestampVidUrl = vidUrl + "?start=" + Math.floor(startTimestamp/1000) + "&end=" + Math.floor(endTimestamp/1000);
+        timestampVidUrl = vidUrl + "?start=" + Math.floor(startTimestamp/1000) + "&end=" + Math.floor(endTimestamp/1000) + "&autoplay=1";
         console.log(timestampVidUrl);
 
         $("#videourl").attr("src", timestampVidUrl);
