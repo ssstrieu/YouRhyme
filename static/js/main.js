@@ -2,13 +2,14 @@
 var lang = "en_US";
 var id, startWord, endWord, vid=1;
 
-vid =  Math.floor(Math.random() * 2);
+vid =  Math.floor(Math.random() * 3);
 
 
 function answer(id) {
     var selected = $("#word" + id).text();
     if (selected == endWord) {
-        alert("Yes!");
+        $("#img" + id).removeClass("hide");
+        setTimeout(function(){ location.reload(); }, 2000);
     } else {
         alert("Try again!");
     }
@@ -76,10 +77,14 @@ if (vid == 0) {
     id = "fZ9WiuJPnNA";
     startWord = "four";
     endWord = "floor";
-} else {
+} else if (vid == 1) {
     id = "9KKHDEdNOUA";
     startWord = "stream";
     endWord = "dream";
+} else {
+    id = "0b-v-wMR69k";
+    startWord = "chair";
+    endWord = "square";
 }
 
 var vidUrl = "https://www.youtube.com/embed/" + id;
@@ -105,7 +110,7 @@ xhr.onreadystatechange = function() {
             var line = htmlDecode(texts[i].innerHTML);
             if (line.indexOf(startWord) >= 0) {
                 inExcerpt = true;
-                startTimestamp = timestamp;
+                startTimestamp = timestamp - 2000;
             }
             if (inExcerpt) {
                 lyrics += line + "<br>";
