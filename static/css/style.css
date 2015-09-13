@@ -18,7 +18,37 @@ body{
 	opacity: 1;
 
 }
+label{
+	color:#fff;
+}
 
+.bingo{
+	position:relative;
+	
+}
+
+img.bingo{
+	position:absolute;
+	top:0;
+	left:0;
+	float:right;
+	z-index: 1;
+	width: 75px;
+	margin-left:160px;
+
+}
+img.bingo1{
+	position:absolute;
+	top:25;
+	left:-50;
+	float:right;
+	z-index: 1;
+	width: 75px;
+	margin-left:160px;
+
+}
+
+}
 .active{
 	background-color: #fff;
 	color:black;
