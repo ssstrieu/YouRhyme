@@ -2,7 +2,7 @@
 var lang = "en_US";
 var id, startWord, endWord, vid=1;
 
-vid =  Math.floor(Math.random() * 3);
+vid =  Math.floor(Math.random() * 5);
 
 
 function answer(id) {
@@ -81,10 +81,18 @@ if (vid == 0) {
     id = "9KKHDEdNOUA";
     startWord = "stream";
     endWord = "dream";
-} else {
+} else if (vid == 2) {
     id = "0b-v-wMR69k";
     startWord = "chair";
     endWord = "square";
+} else if (vid == 3) {
+    id = "XLeUvZvuvAs";
+    startWord = "wrong";
+    endWord = "song";
+} else {
+    id = "4sqN2J9_axY";
+    startWord = "light";
+    endWord = "white";
 }
 
 var vidUrl = "https://www.youtube.com/embed/" + id;
